@@ -187,7 +187,7 @@ A side effect is a promise to synchronize React with something outside render: U
 
 **Design Intent (Before You Read the Code):**
 
-1. Files involved: `packages/twenty-front/src/modules/workspace/components/WorkspaceProviderEffect.tsx:18-90`, plus important effect files such as `AppRouterProviders.tsx:46-50`, `PromiseRejectionEffect.tsx:1-60`, `PageChangeEffect.tsx:1-80`, `SignOutOnOtherTabSignOutEffect.tsx:1-80`.
+1. Files involved: `packages/twenty-front/src/modules/workspace/components/WorkspaceProviderEffect.tsx:18-90`, plus important effect files such as `AppRouterProviders.tsx:46-50`, `PromiseRejectionEffect.tsx:1-60`, `PageChangeEffect.tsx:1-80`, `SignOutOnOtherTabSignOutEffect.tsx:1-17`.
 2. `WorkspaceProviderEffect` owns domain/workspace redirect synchronization.
 3. Pattern: read state/hooks, compute helper with `useCallback`, run guarded effects with explicit dependencies.
 4. Poor implementation causes redirect loops, stale domains, lost query params, or wrong workspace after login.
@@ -268,7 +268,7 @@ Five important effects to inspect:
 2. `WorkspaceProviderEffect.tsx:66-87` redirects from default domain to last workspace.
 3. `packages/twenty-front/src/modules/app/components/AppRouterProviders.tsx:46-50` mounts config/metadata/workspace loading effects.
 4. `packages/twenty-front/src/modules/error-handler/components/PromiseRejectionEffect.tsx:1-60` catches unhandled promise rejections.
-5. `packages/twenty-front/src/modules/auth/effect-components/SignOutOnOtherTabSignOutEffect.tsx:1-80` coordinates cross-tab sign out.
+5. `packages/twenty-front/src/modules/auth/effect-components/SignOutOnOtherTabSignOutEffect.tsx:1-17` coordinates cross-tab sign out.
 
 **The "Aha" Moment:**
 

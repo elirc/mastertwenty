@@ -31,7 +31,7 @@ are; they do not assume you've ever debugged them.
 4. [04-sql-tenancy-lab.md](04-sql-tenancy-lab.md) — hands-on Postgres against
    the multi-tenant schema layout. You cannot debug this system without
    being comfortable in `psql` across `core`, metadata, and workspace schemas.
-5. [05-flashcards.md](05-flashcards.md) — ~50 spaced-repetition cards
+5. [05-flashcards.md](05-flashcards.md) — 50 spaced-repetition cards (25 starred)
    distilled from packs 1–3. Retention is a practice, not a hope.
 6. [06-four-week-plan.md](06-four-week-plan.md) — a day-by-day apprenticeship
    schedule threading all four packs, with exit criteria per week.

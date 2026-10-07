@@ -46,6 +46,14 @@ Authored: 2026-07-11. Method: static reading of a fresh clone (no git history �
 - Runtime behavior of all commands (nothing executed); exact CI job contents (workflow files listed, not parsed).
 - Large subsystems read only structurally: messaging/calendar sync, billing, AI modules, front views/page-layout internals, MCP/OpenAPI surfaces, workspace-migration builder detail.
 
+## 2026-10-06 re-check
+
+Static re-check against `elirc/mastertwenty` (snapshot commit `19dbb5af`, Twenty under `twenty/`). Nothing was installed or run.
+
+- All relative links in `fabledocs/`, `fabledocs2/`, `fabledocs3/` and `fabledocs4/` resolve, and every `#Lx-Ly` anchor is within its file.
+- The webhook seam (behavior 5 above, ADR-010) still matches the code. In `call-webhook.job.ts`, the catch at L102–L116 records an audit event and does not rethrow. `call-webhook-jobs.job.ts:66-73` chunks by 20 and enqueues with `retryLimit: 3`. `bullmq.driver.ts:248` sets `attempts: 1 + retryLimit`. `workspace-event-emitter.ts:70` emits in-process.
+- Not covered in these docs: `call-webhook-jobs-for-metadata.job.ts`, a second fan-out for metadata events. It enqueues the same `CallWebhookJob` (L63–L68), so it has the same single-attempt delivery.
+
 ## Line-number drift warning
 
 Anchors are exact as of authoring. The upstream project moves fast; if an anchor misses, search the quoted symbol name in the same file/directory.
